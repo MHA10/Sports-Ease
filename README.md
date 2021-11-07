@@ -20,4 +20,4 @@ npx create-react-app client
 
 ### Install client side dependencies
 
-npm i axios react-router-dom redux react-redux redux-thunk redux-devtools-extension moment react-moment
+npm i axios react-router-dom redux react-redux redux-thunk redux-devtools-extension moment react-moment uuid
