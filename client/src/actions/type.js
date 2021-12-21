@@ -9,3 +9,5 @@ export const LOGIN_FAIL = "LOGIN_FAIL";
 export const LOGOUT = "LOGOUT";
 export const REGISTER_VENUE_SUCCESS = "REGISTER_VENUE_SUCCESS";
 export const REGISTER_VENUE_FAIL = "REGISTER_VENUE_FAIL";
+export const GET_VENUES = "GET_VENUES";
+export const VENUES_ERROR = "VENUES_ERROR";

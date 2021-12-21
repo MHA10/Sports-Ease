@@ -7,6 +7,7 @@ import Dashboard from "./components/layout/Dashboard";
 import Login from "./components/auth/Login";
 import Alert from "./components/layout/Alert";
 import AddVenue from "./components/layout/AddVenue";
+import ListVenues from "./components/layout/ListVenues";
 import { loadUser } from "./actions/auth";
 import setAuthToken from "./utils/setAuthToken";
 // Redux
@@ -38,6 +39,7 @@ const App = () => {
               <Route exact path="/login" component={Login} />
               <Route exact path="/dashboard" component={Dashboard} />
               <Route exact path="/add-venue" component={AddVenue} />
+              <Route exact path="/list-venues" component={ListVenues} />
             </Switch>
           </section>
         </Fragment>
