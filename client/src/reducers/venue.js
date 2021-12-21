@@ -1,7 +1,6 @@
 import { REGISTER_VENUE_SUCCESS, REGISTER_VENUE_FAIL } from "../actions/type";
 
 const initialState = {
-  token: localStorage.getItem("token"),
   isAdded: null,
   loading: true,
 };

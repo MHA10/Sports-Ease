@@ -9,6 +9,9 @@ const Dashboard = () => {
           <Link to="/add-venue" className="btn btn-primary">
             Add a Venue
           </Link>
+          <Link to="/list-venues" className="btn btn-primary">
+            Venues
+          </Link>
           <Link to="/booking-venues" className="btn btn-primary">
             Book the Venue
           </Link>
