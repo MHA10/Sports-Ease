@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect } from "react";
+import { Link } from "react-router-dom";
 import grass from "../../img/grass.jpg";
 import { connect } from "react-redux";
 import { PropTypes } from "prop-types";
@@ -11,19 +12,22 @@ const ListVenues = ({ getVenues, venue: { venues, loading } }) => {
 
   const renderVenueData = () => {
     return venues.map((venue, index) => {
-      const { name, address } = venue; //destructuring
+      const { _id, name, address } = venue; //destructuring
       return (
-        <div className="column">
-          <div className="card">
-            <img src={grass} alt="Avatar" />
-            <div className="container">
-              <h4>
-                <b>{name}</b>
-              </h4>
-              <p>{address}</p>
+        // Passing the venue as prop within Link
+        <Link to={{ pathname: `/venue-detail/${_id}`, venue: venue }}>
+          <div className="column">
+            <div className="card">
+              <img src={grass} alt="Avatar" className="center" />
+              <div className="container">
+                <h4>
+                  <b>{name}</b>
+                </h4>
+                <p>{address}</p>
+              </div>
             </div>
           </div>
-        </div>
+        </Link>
       );
     });
   };
