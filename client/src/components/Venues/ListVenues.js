@@ -8,14 +8,14 @@ import { getVenues } from "../../actions/listVenue";
 const ListVenues = ({ getVenues, venue: { venues, loading } }) => {
   useEffect(() => {
     getVenues();
-  }, [getVenues]);
+  }, []);
 
   const renderVenueData = () => {
     return venues.map((venue, index) => {
       const { _id, name, address } = venue; //destructuring
       return (
-        // Passing the venue as prop within Link
-        <Link to={{ pathname: `/venue-detail/${_id}`, venue: venue }}>
+        // Passing the venue id as prop within Link to
+        <Link to={{ pathname: `/venue-detail/${_id}` }}>
           <div className="column">
             <div className="card">
               <img src={grass} alt="Avatar" className="center" />
@@ -37,7 +37,7 @@ const ListVenues = ({ getVenues, venue: { venues, loading } }) => {
 
 ListVenues.propTypes = {
   getVenues: PropTypes.func.isRequired,
-  venues: PropTypes.object,
+  venue: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({

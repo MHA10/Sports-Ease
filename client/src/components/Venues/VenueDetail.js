@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
 import { PropTypes } from "prop-types";
+import { getVenue } from "../../actions/listVenue";
 import grass from "../../img/grass.jpg";
 
-const VenueDetail = (props) => {
-  const { name, address } = props.location.venue;
+const VenueDetail = ({ getVenue, match: { params }, venue: { venue } }) => {
+  useEffect(() => {
+    getVenue(params.id);
+  }, []);
+  if (venue == undefined) {
+    return null;
+  }
+  const { name, address } = venue;
   return (
     <div className="card">
       <img src={grass} alt="Avatar" className="center" />
@@ -18,7 +26,12 @@ const VenueDetail = (props) => {
 };
 
 VenueDetail.propTypes = {
-  venue: PropTypes.object,
+  getVenue: PropTypes.func.isRequired,
+  venue: PropTypes.object.isRequired,
 };
 
-export default VenueDetail;
+const mapStateToProps = (state) => ({
+  venue: state.listVenue,
+});
+
+export default connect(mapStateToProps, { getVenue })(VenueDetail);

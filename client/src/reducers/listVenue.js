@@ -1,4 +1,9 @@
-import { GET_VENUES, VENUES_ERROR } from "../actions/type";
+import {
+  GET_VENUES,
+  VENUES_ERROR,
+  GET_VENUE,
+  VENUE_ERROR,
+} from "../actions/type";
 
 const initialState = {
   venues: [],
@@ -17,10 +22,16 @@ export default function (state = initialState, action) {
         loading: false,
       };
     case VENUES_ERROR:
+    case VENUE_ERROR:
       return {
         ...state,
         error: payload,
         loading: false,
+      };
+    case GET_VENUE:
+      return {
+        ...state,
+        venue: payload,
       };
     default:
       return state;

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { setAlert } from "./alert";
-import { GET_VENUES, VENUES_ERROR } from "./type";
+import { GET_VENUES, VENUES_ERROR, GET_VENUE, VENUE_ERROR } from "./type";
 
 // Get Venues
 export const getVenues = () => async (dispatch) => {
@@ -20,6 +20,28 @@ export const getVenues = () => async (dispatch) => {
 
     dispatch({
       type: VENUES_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// Get selected Venue
+export const getVenue = (id) => async (dispatch) => {
+  try {
+    const res = await axios.get(`/api/venues/${id}`);
+    dispatch({
+      type: GET_VENUE,
+      payload: res.data,
+    });
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    }
+
+    dispatch({
+      type: VENUE_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status },
     });
   }
