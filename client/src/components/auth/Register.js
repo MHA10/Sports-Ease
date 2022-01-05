@@ -11,19 +11,25 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     email: "",
     password: "",
     password2: "",
+    isAdmin: "",
   });
 
-  const { name, email, password, password2 } = formData;
+  const { name, email, password, password2, isAdmin } = formData;
 
-  const onChange = (e) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const onChange = (e) => {
+    let value = e.target.value;
+    if (e.target.name == "isAdmin") {
+      value = e.target.checked;
+    }
+    setFormData({ ...formData, [e.target.name]: value });
+  };
 
   const onSubmit = async (e) => {
     e.preventDefault();
     if (password !== password2) {
       setAlert("Passwords donot match", "danger");
     } else {
-      register({ name, email, password });
+      register({ name, email, password, isAdmin });
     }
   };
 
@@ -39,6 +45,15 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
       </p>
       <form className="form" onSubmit={(e) => onSubmit(e)}>
         <div className="form-group">
+          <p className="isAdmin">
+            <i className="fas fa-user-cog"></i> Is admin?
+            <input
+              type="checkbox"
+              id="isAdmin"
+              name="isAdmin"
+              onChange={(e) => onChange(e)}
+            ></input>
+          </p>
           <input
             type="text"
             placeholder="Name"

@@ -33,7 +33,7 @@ export const loadUser = () => async (dispatch) => {
 
 // Register User
 export const register =
-  ({ name, email, password }) =>
+  ({ name, email, password, isAdmin }) =>
   async (dispatch) => {
     const config = {
       headers: {
@@ -41,7 +41,9 @@ export const register =
       },
     };
 
-    const body = JSON.stringify({ name, email, password });
+    // when checkbox value is never changed, it has "" value, need to deal with this
+    isAdmin = isAdmin == "" ? false : true;
+    const body = JSON.stringify({ name, email, password, isAdmin });
 
     try {
       const res = await axios.post("/api/users", body, config);
