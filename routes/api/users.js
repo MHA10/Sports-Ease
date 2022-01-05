@@ -27,7 +27,7 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { name, email, password } = req.body;
+    const { name, email, password, isAdmin } = req.body;
 
     try {
       // See if user exists
@@ -51,6 +51,7 @@ router.post(
         email,
         avatar,
         password,
+        isAdmin,
       });
 
       // Encrypt password
@@ -62,13 +63,14 @@ router.post(
       const payload = {
         user: {
           id: user.id,
+          isAdmin: user.isAdmin,
         },
       };
 
       jwt.sign(
         payload,
         config.get("jwtSecret"),
-        { expiresIn: 3600 },
+        { expiresIn: 360000 },
         (err, token) => {
           if (err) throw err;
           res.json({ token });

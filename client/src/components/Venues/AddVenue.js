@@ -4,11 +4,16 @@ import { connect } from "react-redux";
 import { registerVenue } from "../../actions/venue";
 import PropTypes from "prop-types";
 
-const AddVenue = ({ registerVenue, isAdded }) => {
+const AddVenue = ({ registerVenue, isAdded, isAdmin }) => {
   const [formData, setFormData] = useState({
     name: "",
     address: "",
   });
+
+  // If user is not an Admin, the add venue form should not be accessible
+  if (!isAdmin) {
+    return null;
+  }
 
   const { name, address } = formData;
 
@@ -63,10 +68,12 @@ const AddVenue = ({ registerVenue, isAdded }) => {
 AddVenue.propTypes = {
   registerVenue: PropTypes.func.isRequired,
   isAdded: PropTypes.bool,
+  isAdmin: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   isAdded: state.venue.isAdded,
+  isAdmin: state.auth.isAdmin,
 });
 
 export default connect(mapStateToProps, { registerVenue })(AddVenue);

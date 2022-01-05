@@ -1,13 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const gravatar = require("gravatar");
+const auth = require("../../middleware/auth");
 const { check, validationResult } = require("express-validator");
 const Venue = require("../../models/Venue");
 
 // @route   GET api/venues
 // @desc    Get all the venues
-// @access  Public
-router.get("/", async (req, res) => {
+// @access  Private
+router.get("/", auth, async (req, res) => {
   try {
     const venues = await Venue.find().sort({ date: -1 });
     res.json(venues);
@@ -40,14 +41,19 @@ router.get("/:id", async (req, res) => {
 
 // @route   POST api/venues
 // @desc    Register venue
-// @access  Public
+// @access  Private
 router.post(
   "/",
+  auth,
   [
     check("name", "Name is required").not().isEmpty(),
     check("address", "Address is required").not().isEmpty(),
   ],
   async (req, res) => {
+    // Non-admin user should not be able to register a venue
+    if (!req.user.isAdmin) {
+      return res.status(401).send("Unauthorized, must be an Admin!");
+    }
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
