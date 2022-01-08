@@ -12,8 +12,8 @@ const VenueEdit = ({
   isUpdated = false,
 }) => {
   const [formData, setFormData] = useState({
-    name: venue.name,
-    address: venue.address,
+    name: venue ? venue.name : "",
+    address: venue ? venue.address : "",
   });
 
   if (venue == undefined) {
