@@ -1,6 +1,12 @@
 import axios from "axios";
 import { setAlert } from "./alert";
-import { GET_VENUES, VENUES_ERROR, GET_VENUE, VENUE_ERROR } from "./type";
+import {
+  GET_VENUES,
+  VENUES_ERROR,
+  GET_VENUE,
+  VENUE_ERROR,
+  VENUE_EDIT_ERROR,
+} from "./type";
 
 // Get Venues
 export const getVenues = () => async (dispatch) => {
@@ -10,6 +16,10 @@ export const getVenues = () => async (dispatch) => {
     dispatch({
       type: GET_VENUES,
       payload: res.data,
+    });
+    // Needs to reset the isUpdated flag
+    dispatch({
+      type: VENUE_EDIT_ERROR,
     });
   } catch (err) {
     const errors = err.response.data.errors;

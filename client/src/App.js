@@ -9,6 +9,7 @@ import Alert from "./components/layout/Alert";
 import AddVenue from "./components/Venues/AddVenue";
 import ListVenues from "./components/Venues/ListVenues";
 import VenueDetail from "./components/Venues/VenueDetail";
+import VenueEdit from "./components/Venues/VenueEdit";
 import { loadUser } from "./actions/auth";
 import setAuthToken from "./utils/setAuthToken";
 // Redux
@@ -42,6 +43,7 @@ const App = () => {
               <Route exact path="/add-venue" component={AddVenue} />
               <Route exact path="/list-venues" component={ListVenues} />
               <Route exact path="/venue-detail/:id" component={VenueDetail} />
+              <Route exact path="/venue-edit/:id" component={VenueEdit} />
             </Switch>
           </section>
         </Fragment>

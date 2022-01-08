@@ -505,6 +505,10 @@ button {
   margin-top: 10%;
 }
 
+.card-edit {
+  position: relative;
+  left: 45%;
+}
 .center {
   display: block;
   margin-left: auto;
