@@ -13,3 +13,5 @@ export const GET_VENUES = "GET_VENUES";
 export const VENUES_ERROR = "VENUES_ERROR";
 export const GET_VENUE = "GET_VENUE";
 export const VENUE_ERROR = "VENUE_ERROR";
+export const VENUE_EDIT_SUCCESS = "VENUE_EDIT_SUCCESS";
+export const VENUE_EDIT_ERROR = "VENUE_EDIT_ERROR";

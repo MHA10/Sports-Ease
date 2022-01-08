@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { PropTypes } from "prop-types";
 import { getVenue } from "../../actions/listVenue";
@@ -11,9 +12,13 @@ const VenueDetail = ({ getVenue, match: { params }, venue: { venue } }) => {
   if (venue == undefined) {
     return null;
   }
-  const { name, address } = venue;
+
+  const { _id, name, address } = venue;
   return (
     <div className="card">
+      <Link to={{ pathname: `/venue-edit/${_id}` }}>
+        <i className="fas fa-edit card-edit"></i>
+      </Link>
       <img src={grass} alt="Avatar" className="center" />
       <div className="container">
         <h4>

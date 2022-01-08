@@ -95,7 +95,7 @@ router.post(
 // @route   POST api/venues/:id
 // @desc    Update a venue
 // @access  Public
-router.post("/:id", async (req, res) => {
+router.post("/:id", auth, async (req, res) => {
   const { name, address } = req.body;
 
   // Build venue object
@@ -104,8 +104,16 @@ router.post("/:id", async (req, res) => {
   if (address) venueFields.address = address;
 
   try {
+    // See if venue already exists with same address
+    let venue = await Venue.findOne({ address });
+    if (venue) {
+      return res
+        .status(400)
+        .json({ errors: [{ msg: "Venue already exists with same address" }] });
+    }
+
     // See if venue exists
-    let venue = await Venue.findOne({ _id: req.params.id });
+    venue = await Venue.findOne({ _id: req.params.id });
     if (venue) {
       // Update
       venue = await Venue.findOneAndUpdate(
