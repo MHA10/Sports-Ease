@@ -96,6 +96,10 @@ router.post(
 // @desc    Update a venue
 // @access  Public
 router.post("/:id", auth, async (req, res) => {
+  // Non-admin user should not be able to register a venue
+  if (!req.user.isAdmin) {
+    return res.status(401).send("Unauthorized, must be an Admin!");
+  }
   const { name, address } = req.body;
 
   // Build venue object
