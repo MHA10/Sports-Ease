@@ -136,7 +136,11 @@ router.post("/:id", auth, async (req, res) => {
 // @route   Delete api/venues/:id
 // @desc    Get the venue
 // @access  Public
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", auth, async (req, res) => {
+  // Non-admin user should not be able to delete a venue
+  if (!req.user.isAdmin) {
+    return res.status(401).send("Unauthorized, must be an Admin!");
+  }
   try {
     const venue = await Venue.findById(req.params.id);
     if (!venue) {
