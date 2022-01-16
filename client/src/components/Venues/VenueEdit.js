@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Fragment } from "react";
+import React, { useState, Fragment } from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { PropTypes } from "prop-types";
@@ -16,7 +16,7 @@ const VenueEdit = ({
     address: venue ? venue.address : "",
   });
 
-  if (venue == undefined) {
+  if (venue === undefined || venue === null) {
     return null;
   }
 
@@ -35,7 +35,6 @@ const VenueEdit = ({
   }
 
   const { name, address } = formData;
-  const { _id, name_default, address_default } = venue;
   return (
     <div className="card">
       <img src={grass} alt="Avatar" className="center" />

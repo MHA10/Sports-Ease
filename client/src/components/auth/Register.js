@@ -18,7 +18,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
 
   const onChange = (e) => {
     let value = e.target.value;
-    if (e.target.name == "isAdmin") {
+    if (e.target.name === "isAdmin") {
       value = e.target.checked;
     }
     setFormData({ ...formData, [e.target.name]: value });

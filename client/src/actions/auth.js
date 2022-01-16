@@ -42,7 +42,7 @@ export const register =
     };
 
     // when checkbox value is never changed, it has "" value, need to deal with this
-    isAdmin = isAdmin == "" ? false : true;
+    isAdmin = isAdmin === "" ? false : true;
     const body = JSON.stringify({ name, email, password, isAdmin });
 
     try {

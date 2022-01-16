@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import grass from "../../img/grass.jpg";
 import { connect } from "react-redux";
@@ -8,7 +8,7 @@ import { getVenues } from "../../actions/listVenue";
 const ListVenues = ({ getVenues, venue: { venues, loading } }) => {
   useEffect(() => {
     getVenues();
-  }, []);
+  }, [getVenues]);
 
   const renderVenueData = () => {
     return venues.map((venue, index) => {
