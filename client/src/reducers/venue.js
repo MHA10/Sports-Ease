@@ -6,8 +6,6 @@ import {
 } from "../actions/type";
 
 const initialState = {
-  isAdded: null,
-  isUpdated: false,
   loading: true,
 };
 
@@ -18,27 +16,23 @@ export default function (state = initialState, action) {
       return {
         ...state,
         ...payload,
-        isAdded: true,
         loading: false,
       };
     case VENUE_EDIT_SUCCESS:
       return {
         ...state,
         ...payload,
-        isUpdated: true,
         loading: false,
       };
     case REGISTER_VENUE_FAIL:
       return {
         ...state,
-        isAdded: false,
         loading: false,
       };
     case VENUE_EDIT_ERROR:
       return {
         ...state,
         ...payload,
-        isUpdated: false,
         loading: false,
       };
     default:

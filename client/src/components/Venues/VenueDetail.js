@@ -31,6 +31,7 @@ const VenueDetail = ({
         className="fas fa-trash card-edit-del"
         onClick={() =>
           deleteVenue({ _id }).then(() => {
+            // Refresh the venues list after deletion
             history.push("/list-venues");
           })
         }

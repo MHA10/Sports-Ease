@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { registerVenue } from "../../actions/venue";
 import PropTypes from "prop-types";
 
-const AddVenue = ({ registerVenue, isAdded, isAdmin }) => {
+const AddVenue = ({ registerVenue, isAdmin, history }) => {
   const [formData, setFormData] = useState({
     name: "",
     address: "",
@@ -22,14 +22,11 @@ const AddVenue = ({ registerVenue, isAdded, isAdmin }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    registerVenue({ name, address });
+    registerVenue({ name, address }).then(() => {
+      // Redirect if added successfully
+      history.push("/dashboard");
+    });
   };
-
-  // Redirect if added successfully
-
-  if (isAdded) {
-    return <Redirect to="/dashboard" />;
-  }
 
   return (
     <Fragment>
@@ -67,12 +64,11 @@ const AddVenue = ({ registerVenue, isAdded, isAdmin }) => {
 
 AddVenue.propTypes = {
   registerVenue: PropTypes.func.isRequired,
-  isAdded: PropTypes.bool,
   isAdmin: PropTypes.bool.isRequired,
+  history: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  isAdded: state.venue.isAdded,
   isAdmin: state.auth.isAdmin,
 });
 
