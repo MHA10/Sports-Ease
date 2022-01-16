@@ -16,8 +16,8 @@ const VenueDetail = ({
 }) => {
   useEffect(() => {
     getVenue(params.id);
-  }, []);
-  if (venue == undefined) {
+  }, [getVenue, params.id]);
+  if (venue === undefined || venue === null) {
     return null;
   }
 
