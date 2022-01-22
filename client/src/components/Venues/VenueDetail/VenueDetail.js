@@ -18,6 +18,7 @@ const VenueDetail = ({
   useEffect(() => {
     getVenue(params.id);
   }, [getVenue, params.id]);
+
   if (venue === undefined || venue === null) {
     return null;
   }
@@ -45,7 +46,7 @@ const VenueDetail = ({
     <Fragment>
       <section className="container">
         <i
-          class="fas fa-2x fa-arrow-circle-left back-list"
+          className="fas fa-2x fa-arrow-circle-left back-list"
           onClick={() => {
             // Redirect to Venue List on back
             history.push("/list-venues");
