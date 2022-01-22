@@ -16,7 +16,7 @@ const ListVenues = ({ getVenues, venue: { venues, loading }, history }) => {
       const { _id, name, address } = venue; //destructuring
       return (
         // Passing the venue id as prop within Link to
-        <Link to={{ pathname: `/venue-detail/${_id}` }}>
+        <Link to={{ pathname: `/venue-detail/${_id}` }} key={_id}>
           <div className="column">
             <div className="card card-list">
               <img src={grass} alt="Avatar" className="center" />
@@ -38,7 +38,7 @@ const ListVenues = ({ getVenues, venue: { venues, loading }, history }) => {
       <section className="container">
         <div>
           <i
-            class="fas fa-2x fa-arrow-circle-left back-list"
+            className="fas fa-2x fa-arrow-circle-left back-list"
             onClick={() => {
               // Redirect to Dashboard on back
               history.push("/dashboard");

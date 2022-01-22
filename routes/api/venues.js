@@ -108,14 +108,6 @@ router.post("/:id", auth, async (req, res) => {
   if (address) venueFields.address = address;
 
   try {
-    // See if venue already exists with same address
-    let venue = await Venue.findOne({ address });
-    if (venue) {
-      return res
-        .status(400)
-        .json({ errors: [{ msg: "Venue already exists with same address" }] });
-    }
-
     // See if venue exists
     venue = await Venue.findOne({ _id: req.params.id });
     if (venue) {

@@ -1,18 +1,22 @@
-import React, { useState, Fragment } from "react";
-import { Redirect } from "react-router-dom";
+import React, { useEffect, useState, Fragment } from "react";
 import { connect } from "react-redux";
 import { PropTypes } from "prop-types";
 import grass from "../../../img/grass.jpg";
+import { getVenue } from "../../../actions/listVenue";
 import { updateVenue } from "../../../actions/venue";
 import "./VenueEdit.scss";
 
 const VenueEdit = ({
+  getVenue,
   updateVenue,
-  location,
+  match: { params },
   venue: { venue },
-  isUpdated = false,
   history,
 }) => {
+  useEffect(() => {
+    getVenue(params.id);
+  }, [getVenue, params.id]);
+
   const [formData, setFormData] = useState({
     name: venue ? venue.name : "",
     address: venue ? venue.address : "",
@@ -27,14 +31,11 @@ const VenueEdit = ({
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    updateVenue(venue._id, name, address);
+    updateVenue(venue._id, name, address).then(() => {
+      // Redirect to venue detail on save
+      history.push("/venue-detail/" + venue._id);
+    });
   };
-
-  // Redirect if updated successfully
-
-  if (isUpdated) {
-    return <Redirect to="/list-venues" />;
-  }
 
   const { name, address } = formData;
   return (
@@ -93,16 +94,14 @@ const VenueEdit = ({
 };
 
 VenueEdit.propTypes = {
+  getVenue: PropTypes.func.isRequired,
   updateVenue: PropTypes.func.isRequired,
-  location: PropTypes.array.isRequired,
   venue: PropTypes.object.isRequired,
-  isUpdated: PropTypes.bool.isRequired,
   history: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   venue: state.listVenue,
-  isUpdated: state.venue.isUpdated,
 });
 
-export default connect(mapStateToProps, { updateVenue })(VenueEdit);
+export default connect(mapStateToProps, { getVenue, updateVenue })(VenueEdit);
