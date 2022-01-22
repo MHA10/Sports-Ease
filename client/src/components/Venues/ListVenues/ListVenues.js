@@ -6,7 +6,7 @@ import { PropTypes } from "prop-types";
 import { getVenues } from "../../../actions/listVenue";
 import "./ListVenues.scss";
 
-const ListVenues = ({ getVenues, venue: { venues, loading } }) => {
+const ListVenues = ({ getVenues, venue: { venues, loading }, history }) => {
   useEffect(() => {
     getVenues();
   }, [getVenues]);
@@ -35,7 +35,18 @@ const ListVenues = ({ getVenues, venue: { venues, loading } }) => {
 
   return (
     <Fragment>
-      <section className="container">{renderVenueData()}</section>
+      <section className="container">
+        <div>
+          <i
+            class="fas fa-2x fa-arrow-circle-left back-list"
+            onClick={() => {
+              // Redirect to Dashboard on back
+              history.push("/dashboard");
+            }}
+          ></i>
+        </div>
+        {renderVenueData()}
+      </section>
     </Fragment>
   );
 };
@@ -43,6 +54,7 @@ const ListVenues = ({ getVenues, venue: { venues, loading } }) => {
 ListVenues.propTypes = {
   getVenues: PropTypes.func.isRequired,
   venue: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({

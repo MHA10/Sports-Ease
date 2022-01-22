@@ -7,3 +7,19 @@
   width: 55%;
   margin-left: 17.5%;
 }
+
+.card-edit {
+  position: relative;
+  left: 35%;
+}
+
+.card-edit-del {
+  position: relative;
+  left: 40%;
+  color: grey;
+  cursor: pointer;
+
+  &:hover {
+    color: #343a40;
+  }
+}

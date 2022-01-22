@@ -11,6 +11,7 @@ const VenueEdit = ({
   location,
   venue: { venue },
   isUpdated = false,
+  history,
 }) => {
   const [formData, setFormData] = useState({
     name: venue ? venue.name : "",
@@ -75,6 +76,15 @@ const VenueEdit = ({
               className="btn btn-primary btn-primary-edit"
               value="Save"
             />
+            <input
+              type="submit"
+              className="btn btn-primary btn-danger btn-primary-edit"
+              value="Cancel"
+              onClick={() => {
+                // Redirect to Venue Detail on back
+                history.push("/venue-detail/" + venue._id);
+              }}
+            />
           </form>
         </div>
       </section>
@@ -87,6 +97,7 @@ VenueEdit.propTypes = {
   location: PropTypes.array.isRequired,
   venue: PropTypes.object.isRequired,
   isUpdated: PropTypes.bool.isRequired,
+  history: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({

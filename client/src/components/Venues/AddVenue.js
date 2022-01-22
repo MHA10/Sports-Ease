@@ -30,7 +30,9 @@ const AddVenue = ({ registerVenue, isAdmin, history }) => {
   return (
     <Fragment>
       <section className="container">
-        <h1 className="large text-primary">Add Venue</h1>
+        <div>
+          <h1 className="large text-primary">Add Venue</h1>
+        </div>
         <p className="lead">
           <i className="fas fa-running"></i> Add a Venue/Ground
         </p>
@@ -57,6 +59,15 @@ const AddVenue = ({ registerVenue, isAdmin, history }) => {
             />
           </div>
           <input type="submit" className="btn btn-primary" value="Add" />
+          <input
+            type="submit"
+            className="btn btn-primary btn-danger"
+            value="Cancel"
+            onClick={() => {
+              // Redirect to Dashboard on cancel
+              history.push("/dashboard");
+            }}
+          />
         </form>
       </section>
     </Fragment>

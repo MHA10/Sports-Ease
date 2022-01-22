@@ -44,6 +44,13 @@ const VenueDetail = ({
   return (
     <Fragment>
       <section className="container">
+        <i
+          class="fas fa-2x fa-arrow-circle-left back-list"
+          onClick={() => {
+            // Redirect to Venue List on back
+            history.push("/list-venues");
+          }}
+        ></i>
         <div className="card card-detail">
           {<Fragment>{isAdmin ? isAdminOptions : null}</Fragment>}
           <img src={grass} alt="Avatar" className="center" />
