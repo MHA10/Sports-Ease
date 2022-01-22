@@ -2,7 +2,8 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { logout } from "../../actions/auth";
+import "./Navbar.scss";
+import { logout } from "../../../actions/auth";
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
@@ -24,9 +25,6 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 
   const guestLInks = (
     <ul>
-      <li>
-        <a href="#!">Developers</a>
-      </li>
       <li>
         <Link to="/register">Register</Link>
       </li>

@@ -29,34 +29,36 @@ const AddVenue = ({ registerVenue, isAdmin, history }) => {
 
   return (
     <Fragment>
-      <h1 className="large text-primary">Add Venue</h1>
-      <p className="lead">
-        <i className="fas fa-running"></i> Add a Venue/Ground
-      </p>
-      <form className="form" onSubmit={(e) => onSubmit(e)}>
-        <div className="form-group">
-          <input
-            type="text"
-            placeholder="Venue Name"
-            name="name"
-            value={name}
-            onChange={(e) => onChange(e)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <input
-            type="text"
-            placeholder="Address"
-            name="address"
-            value={address}
-            onChange={(e) => onChange(e)}
-            minLength="6"
-            required
-          />
-        </div>
-        <input type="submit" className="btn btn-primary" value="Add" />
-      </form>
+      <section className="container">
+        <h1 className="large text-primary">Add Venue</h1>
+        <p className="lead">
+          <i className="fas fa-running"></i> Add a Venue/Ground
+        </p>
+        <form className="form" onSubmit={(e) => onSubmit(e)}>
+          <div className="form-group">
+            <input
+              type="text"
+              placeholder="Venue Name"
+              name="name"
+              value={name}
+              onChange={(e) => onChange(e)}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="text"
+              placeholder="Address"
+              name="address"
+              value={address}
+              onChange={(e) => onChange(e)}
+              minLength="6"
+              required
+            />
+          </div>
+          <input type="submit" className="btn btn-primary" value="Add" />
+        </form>
+      </section>
     </Fragment>
   );
 };

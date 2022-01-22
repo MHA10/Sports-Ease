@@ -17,7 +17,7 @@ body {
   font-family: "Raleway", sans-serif;
   font-size: 1rem;
   line-height: 1.6;
-  background-color: #fff;
+  background-color: #faf9f6;
   color: #333;
 }
 
@@ -156,58 +156,44 @@ img {
   color: #333;
 }
 
-.alert {
-  padding: 0.8rem;
-  margin: 1rem 0;
-  opacity: 0.9;
-  background: var(--light-color);
-  color: #333;
-}
-
 .btn-primary,
 .bg-primary,
-.badge-primary,
-.alert-primary {
+.badge-primary {
   background: var(--primary-color);
   color: #fff;
 }
 
 .btn-light,
 .bg-light,
-.badge-light,
-.alert-light {
+.badge-light {
   background: var(--light-color);
   color: #333;
 }
 
 .btn-dark,
 .bg-dark,
-.badge-dark,
-.alert-dark {
+.badge-dark {
   background: var(--dark-color);
   color: #fff;
 }
 
 .btn-danger,
 .bg-danger,
-.badge-danger,
-.alert-danger {
+.badge-danger {
   background: var(--danger-color);
   color: #fff;
 }
 
 .btn-success,
 .bg-success,
-.badge-success,
-.alert-success {
+.badge-success {
   background: var(--success-color);
   color: #fff;
 }
 
 .btn-white,
 .bg-white,
-.badge-white,
-.alert-white {
+.badge-white {
   background: #fff;
   color: #333;
   border: #ccc solid 1px;
@@ -264,6 +250,7 @@ img {
   padding: 0.4rem;
   font-size: 1.2rem;
   border: 1px solid #ccc;
+  border-radius: 5px; /* 5px rounded corners */
 }
 
 .form input[type="submit"],
@@ -304,57 +291,6 @@ button {
 
 .table th {
   background: var(--light-color);
-}
-
-/* Navbar */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.7rem 2rem;
-  position: fixed;
-  z-index: 1;
-  width: 100%;
-  top: 0;
-  border-bottom: solid 1px var(--primary-color);
-  opacity: 0.9;
-}
-
-.navbar ul {
-  display: flex;
-}
-
-.navbar a {
-  color: #fff;
-  padding: 0.45rem;
-  margin: 0 0.25rem;
-}
-
-.navbar a:hover {
-  color: var(--primary-color);
-}
-
-.navbar .welcome span {
-  margin-right: 0.6rem;
-}
-
-/* Landing Page */
-.landing {
-  position: relative;
-  background: url("./img/sports-landing-bg.jpg") no-repeat center center/cover;
-  height: 100vh;
-}
-
-.landing-inner {
-  color: #fff;
-  height: 100%;
-  width: 80%;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
 }
 
 /* Profiles Page */
@@ -496,13 +432,9 @@ button {
   margin-bottom: 0.5rem;
 }
 
-.card img {
-  border-radius: 5px 5px 5px 5px;
-  width: 35%;
-}
-
 .card .container {
   margin-top: 10%;
+  margin-bottom: 0%;
 }
 
 .card-edit {
@@ -520,13 +452,13 @@ button {
   margin-left: auto;
   margin-right: auto;
   width: 50%;
+  margin-top: 10%;
 }
 
 /* Float three columns side by side */
 .column {
   float: left;
-  width: 33%;
-  padding: 0 10px;
+  width: 25%;
 }
 
 /* Remove extra left and right margins, due to padding */
@@ -552,10 +484,9 @@ button {
 
 /* Style the counter cards */
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
   transition: 0.3s;
   border-radius: 5px; /* 5px rounded corners */
-  margin-top: 1rem;
   text-align: center;
   padding-top: 2%;
   background: #f8f4f2;
@@ -586,25 +517,6 @@ button {
 
   .isAdmin {
     font-size: 0.75rem;
-  }
-
-  /* Navbar */
-  .navbar {
-    display: block;
-    text-align: center;
-  }
-
-  .navbar ul {
-    text-align: center;
-    justify-content: center;
-  }
-
-  .navbar h1 {
-    margin-bottom: 1rem;
-  }
-
-  .navbar .welcome {
-    display: none;
   }
 
   /* Profiles Page */

@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { Fragment, useEffect } from "react";
 import { Link } from "react-router-dom";
-import grass from "../../img/grass.jpg";
+import grass from "../../../img/grass.jpg";
 import { connect } from "react-redux";
 import { PropTypes } from "prop-types";
-import { getVenues } from "../../actions/listVenue";
+import { getVenues } from "../../../actions/listVenue";
+import "./ListVenues.scss";
 
 const ListVenues = ({ getVenues, venue: { venues, loading } }) => {
   useEffect(() => {
@@ -17,7 +18,7 @@ const ListVenues = ({ getVenues, venue: { venues, loading } }) => {
         // Passing the venue id as prop within Link to
         <Link to={{ pathname: `/venue-detail/${_id}` }}>
           <div className="column">
-            <div className="card">
+            <div className="card card-list">
               <img src={grass} alt="Avatar" className="center" />
               <div className="container">
                 <h4>
@@ -32,7 +33,11 @@ const ListVenues = ({ getVenues, venue: { venues, loading } }) => {
     });
   };
 
-  return <div>{renderVenueData()}</div>;
+  return (
+    <Fragment>
+      <section className="container">{renderVenueData()}</section>
+    </Fragment>
+  );
 };
 
 ListVenues.propTypes = {
