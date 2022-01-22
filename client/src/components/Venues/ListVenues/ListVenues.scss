@@ -7,4 +7,18 @@
   width: 90%;
   margin-left: 5%;
   margin-top: 1rem;
+
+  &:hover {
+    background-color: #faf9f6;
+  }
+}
+
+.back-list {
+  margin-left: 95%;
+  color: grey;
+  cursor: pointer;
+
+  &:hover {
+    color: #343a40;
+  }
 }

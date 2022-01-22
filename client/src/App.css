@@ -437,16 +437,6 @@ button {
   margin-bottom: 0%;
 }
 
-.card-edit {
-  position: relative;
-  left: 40%;
-}
-
-.card-edit-del {
-  position: relative;
-  left: 45%;
-  cursor: pointer;
-}
 .center {
   display: block;
   margin-left: auto;
