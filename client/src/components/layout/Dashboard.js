@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 const Dashboard = ({ isAdmin }) => {
   const adminButtons = (
-    <div>
+    <Fragment>
       <Link to="/add-venue" className="btn btn-primary">
         Add a Venue
       </Link>
@@ -15,27 +15,31 @@ const Dashboard = ({ isAdmin }) => {
       <Link to="/booking-venues" className="btn btn-primary">
         Book the Venue
       </Link>
-    </div>
+    </Fragment>
   );
   const nonAdminButtons = (
-    <div>
+    <Fragment>
       <Link to="/list-venues" className="btn btn-primary">
         Venues
       </Link>
       <Link to="/booking-venues" className="btn btn-primary">
         Book the Venue
       </Link>
-    </div>
+    </Fragment>
   );
 
   return (
-    <div className="dark-overlay">
-      <div className="landing-inner">
-        <div className="buttons">
-          {<Fragment>{isAdmin ? adminButtons : nonAdminButtons}</Fragment>}
+    <Fragment>
+      <section className="container">
+        <div className="dark-overlay">
+          <div className="landing-inner">
+            <div className="buttons">
+              {<Fragment>{isAdmin ? adminButtons : nonAdminButtons}</Fragment>}
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </Fragment>
   );
 };
 
