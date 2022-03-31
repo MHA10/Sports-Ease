@@ -4,6 +4,7 @@ const db = config.get("mongoURI");
 
 const connectDB = async () => {
   try {
+    // const dev = process.argv.slice(2)[0].toLowerCase() === "dev";
     // await mongoose.connect(db, {
     //   useNewUrlParser: true,
     // });

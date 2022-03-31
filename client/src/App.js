@@ -10,6 +10,7 @@ import AddVenue from "./components/Venues/AddVenue";
 import ListVenues from "./components/Venues/ListVenues/ListVenues";
 import VenueDetail from "./components/Venues/VenueDetail/VenueDetail";
 import VenueEdit from "./components/Venues/VenueEdit/VenueEdit";
+import AddBooking from "./components/Bookings/AddBooking";
 import { loadUser } from "./actions/auth";
 import setAuthToken from "./utils/setAuthToken";
 // Redux
@@ -43,6 +44,7 @@ const App = () => {
             <Route exact path="/list-venues" component={ListVenues} />
             <Route exact path="/venue-detail/:id" component={VenueDetail} />
             <Route exact path="/venue-edit/:id" component={VenueEdit} />
+            <Route exact path="/booking-venues" component={AddBooking} />
           </Switch>
         </Fragment>
       </Router>
