@@ -2,6 +2,8 @@ import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
   USER_LOADED,
+  USERS_LOADED,
+  USERS_LOADED_FAIL,
   AUTH_ERROR,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
@@ -13,6 +15,7 @@ const initialState = {
   isAuthenticated: null,
   loading: true,
   user: null,
+  users: null,
   isAdmin: false,
 };
 
@@ -27,6 +30,12 @@ export default function red(state = initialState, action) {
         user: payload,
         isAdmin: payload.isAdmin,
       };
+    case USERS_LOADED:
+      return {
+        ...state,
+        loading: false,
+        users: payload,
+      };
     case REGISTER_SUCCESS:
     case LOGIN_SUCCESS:
       localStorage.setItem("token", payload.token);
@@ -40,6 +49,7 @@ export default function red(state = initialState, action) {
     case AUTH_ERROR:
     case LOGIN_FAIL:
     case LOGOUT:
+    case USERS_LOADED_FAIL:
       localStorage.removeItem("token");
       return {
         ...state,
